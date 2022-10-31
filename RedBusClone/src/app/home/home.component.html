@@ -1,0 +1,1041 @@
+<nav class="navbar navbar-expand-sm bg-danger navbar-dark fixed-top">
+  <div class="container">
+    <!-- Brand -->
+    <!-- <a class="navbar-brand" href="#"><img src="https://i.postimg.cc/zXFNsGkg/redbus-white.png" alt="redBus" width="60px"></a> -->
+    <a class="navbar-brand" href="#"><b>KYB</b></a>
+    <!-- Toggler/collapsibe Button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#menu-nav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="menu-nav">
+      <!-- Left-aligned nav (default) -->
+      <div>
+        <ul class="navbar-nav">
+          <!-- <li class="nav-item">
+            <a class="nav-link text-white text-uppercase" href="#"
+              >Bus Tickets</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white text-uppercase" href="#">Hotels</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white text-uppercase" href="#">Bus Hire</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white text-uppercase" href="#"
+              >Pilgrimages</a
+            >
+          </li> -->
+        </ul>
+      </div>
+
+      <!-- Right-aligned nav -->
+      <div class="collapse navbar-collapse justify-content-end" id="menu-nav">
+        <ul class="navbar-nav">
+           <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/privacy">Privacy</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/booking">Manage Booking</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle text-white"
+              routerLink="/booking"
+              data-toggle="dropdown"
+            >
+              Manage Booking
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Cancel Ticket</a>
+              <a class="dropdown-item" href="#">View</a>
+            </div>
+          </li> -->
+          <!-- <span>{{ data.Name }}</span> -->
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle text-white"
+              href="#"
+              data-toggle="dropdown"
+            >
+              <i class="fas fa-user-circle"></i>
+            </a>
+            <div class="dropdown-menu">
+              <!-- <button
+                type="button"
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                Sign In/Sign Up
+              </button> -->
+              <button
+                type="button"
+                class="dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal2"
+              >
+                Sign In/Sign Up
+              </button>
+              <button type="button" class="dropdown-item">LogOut</button>
+              <!-- <a class="dropdown-item" routerLink="/">SignIn</a> -->
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+ <div
+  class="modal fade"
+  id="registerModal2"
+  class="modal-style-1 dark modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registration Form</h5>
+        <button
+        type="button"
+        class="close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="signupvalue">
+          <div class="form-group">
+            <label>Name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              placeholder="name"
+            />
+            <!-- <input
+            type="text"
+            class="form-control"
+            formControlName="Name"
+            placeholder="Enter your name"
+            required
+          /> -->
+            <span
+              class="text-danger"
+              *ngIf="
+                signupvalue.controls['name'].dirty &&
+                signupvalue.hasError('required', 'name')
+              "
+              >*Name is Required</span
+            >
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="email"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                signupvalue.controls['email'].dirty &&
+                signupvalue.hasError('required', 'email')
+              "
+              >*Email is Required</span
+            >
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="phone"
+              placeholder="phone"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                signupvalue.controls['phone'].dirty &&
+                signupvalue.hasError('required', 'phone')
+              "
+              >*Phone Number is Required</span
+            >
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="password"
+              placeholder="password"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                signupvalue.controls['password'].dirty &&
+                signupvalue.hasError('required', 'password')
+              "
+              >*Password is Required</span
+            >
+          </div>
+          <div class="form-group">
+            <label>Gender</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="gender"
+              placeholder="Gender"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                signupvalue.controls['gender'].dirty &&
+                signupvalue.hasError('required', 'gender')
+              "
+              >*Password is Required</span
+            >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="cancel"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button type="submit" (click)="RegisterUser()" class="btn btn-primary">
+          Register
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-toggle="modal"
+          data-bs-target="#loginModal2"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<!--  -->
+ <!-- <div id="registerModal2" class="modal-style-2 dark modal">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header p-0">
+        <h4 class="modal-title">Register</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-hidden="true"
+        >
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="signupvalue" class="mt-3">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="Name"
+                placeholder="Enter your name"
+                required
+              />
+              <!-- <span
+                class="text-light"
+                *ngIf="
+                  signupvalue.controls['Name'].dirty &&
+                  signupvalue.hasError('required', 'Name')
+                "
+                >*Name is Required</span
+              > 
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"
+                ><i class="fa fa-envelope"></i
+              ></span>
+              <input
+                type="email"
+                class="form-control"
+                formControlName="Email"
+                placeholder="Enter email address"
+                required
+              />
+              <!-- <span
+                class="text-light"
+                *ngIf="
+                  signupvalue.controls['Email'].dirty &&
+                  signupvalue.hasError('required', 'Email')
+                "
+                >*Email is Required</span
+              > 
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="Phone"
+                placeholder=" Enter ur phone"
+                required
+              />
+              <!-- <span
+                class="text-light"
+                *ngIf="
+                  signupvalue.controls['Phone'].dirty &&
+                  signupvalue.hasError('required', 'Phone')
+                "
+                >*Phone is Required</span
+              > 
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+
+              <input
+                type="password"
+                class="form-control"
+                formControlName="Password"
+                placeholder="Enter password"
+                autocomplete="on"
+                required
+              />
+              <!-- <span
+                class="text-light"
+                *ngIf="
+                  signupvalue.controls['Password'].dirty &&
+                  signupvalue.hasError('required', 'Password')
+                "
+                >*password is Required</span
+              > 
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group">
+              <input
+                type="radio"
+                value="male"
+                formControlName="Gender"
+                name="Gender"
+              />
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <span>Male</span>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <input
+                type="radio"
+                formControlName="Gender"
+                value="female"
+                name="Gender"
+              />
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <span>Female</span>
+              <span
+                class="text-light"
+                *ngIf="
+                  signupvalue.controls['Gender'].dirty &&
+                  signupvalue.hasError('required', 'Gender')
+                "
+                >*Gender is Required</span
+              >
+            </div>
+          </div>
+
+          <div class="form-group text-center">
+            <button
+              id="signup-button"
+              type="submit"
+              class="btn btn-primary btn-sm"
+              (click)="RegisterUser()"
+            >
+              Register
+            </button>
+          </div>
+        </form>
+
+        <p class="hint-text">or register with</p>
+        <div class="social-login text-center mb-2">
+          <a class="btn-facebook text-uppercase" href="redirect/facebook"
+            ><i class="fab fa-facebook-f mr-2 ml-2"></i>
+          </a>
+          <a class="btn-facebook text-uppercase" href="redirect/google"
+            ><i class="fab fa-google mr-2 ml-2"></i
+          ></a>
+          <a class="btn-facebook text-uppercase" href="redirect/twitter"
+            ><i class="fab fa-twitter mr-2 ml-2"></i
+          ></a>
+        </div>
+        <div class="modal-footer">
+          Already have an account?
+          <a data-bs-toggle="modal" data-bs-target="#loginModal2"> Login </a>
+         
+        </div>
+      </div>
+    </div>
+  </div> -->
+   <!-- SignUp Ends  -->
+
+<div id="loginModal2" class="modal-style-2 dark modal">
+  <div class="modal-dialog modal-login">
+    <div class="modal-content">
+      <div class="modal-header p-0">
+        <h4 class="modal-title">Login</h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-hidden="true"
+        >
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- dont forget to add action and action method  -->
+        <form name="form" #f="ngForm" class="mt-3">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input
+                type="email"
+                name="Email"
+                class="form-control"
+                placeholder="Email"
+                [(ngModel)]="model.Email"
+                required="required"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+              <input
+                type="password"
+                class="form-control"
+                name="Password"
+                placeholder="Enter password"
+                required="required"
+                autocomplete="on"
+                [(ngModel)]="model.Password"
+              />
+            </div>
+          </div>
+          <div class="row pl-1 pr-1">
+            <div class="col text-left">
+              <label class="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  id="item_checkbox"
+                  name="item_checkbox"
+                  value="option1"
+                />
+                <span class="custom-control-label">&nbsp;Remember Me</span>
+              </label>
+            </div>
+            <div class="col text-right hint-text pt-0">
+              <a href="" class="text-danger">Forgot Password?</a>
+            </div>
+          </div>
+          <div class="form-group text-center mt-2 mb-0">
+            <button
+              type="submit"
+              class="btn btn-primary btn-sm"
+              (click)="login()"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        Don't have an account?
+        <button
+          type="button"
+          class="dropdown-item"
+          data-bs-toggle="modal"
+          data-bs-target="#registerModal2"
+        >
+          Register
+        </button>
+        <!-- <a href="#registerModal2" data-dismiss="modal" data-toggle="modal">
+          Register</a
+        > -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Login Model End -->
+
+<!-- Main Home Banner and Input Search Container -->
+<div class="position-relative">
+  <div>
+    <div class="home-banner"></div>
+  </div>
+  <div>
+    <div class="input-search-container">
+      <form class="d-flex justify-content-center" name="form" #f="ngForm">
+        <div class="d-inline-block position-relative">
+          <span class="inputIcon"><i class="far fa-building"></i></span>
+          <label class="inputLabel-default" for="source"></label>
+          <input
+            id="input-label-from"
+            class="inputForm"
+            name="source"
+            [(ngModel)]="modal.source"
+            placeholder="From"
+            type="text"
+            required
+          />
+        </div>
+
+        <div class="d-inline-block position-relative">
+          <span class="inputIcon"><i class="far fa-building"></i></span>
+          <label class="inputLabel-default" for="destination"></label>
+          <input
+            id="input-label-to"
+            class="inputForm"
+            placeholder="To"
+            name="destination"
+            [(ngModel)]="modal.destination"
+            type="text"
+            required
+          />
+          <!-- <datalist id="input-to-list"> -->
+          <!-- <option value="Delhi"></option>
+             </datalist> -->
+        </div>
+
+        <div class="d-inline-block position-relative">
+          <span class="inputIcon"><i class="fas fa-calendar-alt"></i></span>
+          <label class="inputLabel-default" for="bus_date"></label>
+          <input
+            id="input-label-onward-date"
+            placeholder="JourneyDate"
+            class="inputForm"
+            name="bus_date"
+            [(ngModel)]="modal.bus_date"
+            type="date"
+          />
+        </div>
+        <div class="d-inline-block position-relative">
+          <input
+            class="btn btn-danger rounded-0 pl-3 pr-3 pb-2"
+            (click)="loadAllEmp()"
+            type="button"
+            value="Search Buses"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- <app-filter busType1="{busType1}"></app-filter> -->
+<!-- Coupons Container -->
+<div class="position-relative">
+  <div class="holiday-coupon-container bg-white p-2 shadow">
+    <div class="float-left mr-4 ml-4">
+      <img
+        src="https://i.postimg.cc/XYxVCYGb/holiday.png"
+        alt="holiday_coupon"
+      />
+    </div>
+
+    <div class="d-table-cell align-middle pl-2">
+      <div class="lead font-weight-bold">SAVE UPTO RS 375 ON BUS TICKETS</div>
+      <div class="text-muted">Use code FIRST on App</div>
+    </div>
+  </div>
+</div>
+
+<!-- Cashback Container -->
+<div
+  class="cashback-container d-flex justify-content-center bg-light mb-5 pb-5 pt-5"
+>
+  <div class="text-center bg-white shadow m-3 p-2 pl-5 pr-5 mt-5">
+    <div class="text-muted font-weight-bold small">
+      Travel on RTC and Save up to Rs 175
+    </div>
+    <div><img src="https://i.postimg.cc/kG8J6N81/bus.png" alt="bus" /></div>
+    <div class="text-muted small">Pay using Amazon Pay</div>
+    <div class="font-weight-normal">Use code : AABBC</div>
+  </div>
+
+  <div class="text-center bg-white shadow m-3 p-2 pl-5 pr-5 mt-5">
+    <div class="text-muted font-weight-bold small">
+      Cashback up to Rs 275 on bus tickets.
+    </div>
+    <div>
+      <img src="https://i.postimg.cc/kg7JGb5s/holiday-cashback.png" alt="bus" />
+    </div>
+    <div class="text-muted small">Limited Period Offer</div>
+    <div class="font-weight-normal">Use code : CCDDEE</div>
+  </div>
+
+  <div class="text-center bg-white shadow m-3 p-2 pl-5 pr-5 mt-5">
+    <div class="text-muted font-weight-bold small">
+      Cashback up to Rs 275 on bus tickets.
+    </div>
+    <div>
+      <img src="https://i.postimg.cc/d1htvc0K/amazon.png" alt="bus" />
+    </div>
+    <div class="text-muted small">Pay using Amazon Pay</div>
+    <div class="font-weight-normal">Limited Period Offer</div>
+  </div>
+</div>
+
+<!-- Introducing On-Time Guarantee Container -->
+<div class="on-time-guarantee d-flex mt-5 mb-5 p-4 border">
+  <div class="pr-4">
+    <img
+      src="https://i.postimg.cc/xTDTr7DW/hero-ontime.png"
+      alt="hero_ontime"
+      width="80px"
+    />
+  </div>
+
+  <div>
+    <div>
+      <h2>Introducing On-Time Guarantee</h2>
+      <h4 class="text-muted font-weight-normal">Leave on time, everytime</h4>
+    </div>
+
+    <div class="d-flex pt-4 pb-4">
+      <p class="font-weight-light mr-3">
+        <span
+          ><img src="https://i.postimg.cc/Z5Ym4zfD/tip-icon.png" height="23"
+        /></span>
+        Look for buses with
+      </p>
+      <p class="mr-3">
+        <img src="https://i.postimg.cc/fyxsTzn1/otgText.png" />
+      </p>
+      <p class="font-weight-light mr-3">tag while booking your journey</p>
+    </div>
+
+    <div class="d-flex">
+      <div>
+        <h5 class="text-primary">Bus on time</h5>
+        <div class="font-weight-bold">Get 25% refund</div>
+        <div class="text-muted">
+          If bus departure is delayed by 30 mins from boarding point.
+        </div>
+      </div>
+
+      <div>
+        <h5 class="text-primary">No bus cancellation</h5>
+        <div class="font-weight-bold">Get 150% refund</div>
+        <div class="text-muted">
+          Bus is cancelled without an alternate arrangement.
+        </div>
+      </div>
+
+      <div>
+        <h5 class="text-primary">Alternate assurance</h5>
+        <div class="font-weight-bold">Get 300% refund</div>
+        <div class="text-muted">
+          Bus breaks down with no alternate arrangement within 6 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- redBus Video Container -->
+<!-- <div class="m-5 pl-5">
+  <div class="ml-5 pl-4">
+    <iframe
+      src="https://www.youtube.com/embed/x5EQNUsYNUM"
+      width="375"
+      height="198"
+    ></iframe>
+  </div>
+</div> -->
+
+<!-- Track My Bus - Smarter Way To Travel Container -->
+<div class="track-my-bus bg-light p-4 mb-5 pb-5">
+  <div class="mb-5">
+    <div class="float-left mr-5 ml-5">
+      <img src="https://i.postimg.cc/mkGxnvzj/tmb-img.png" alt="tmb_img" />
+    </div>
+
+    <div class="d-table-cell align-middle pl-5 pr-5">
+      <h3>TRACK MY BUS - Smarter Way To Travel</h3>
+      <p class="text-muted">
+        Track your bus with our ‘Track My Bus’ feature and know the exact
+        location in real-time.Stay informed and keep your family informed!
+      </p>
+      <button class="btn btn-light btn-outline-danger">Know More</button>
+    </div>
+  </div>
+
+  <hr class="w-75 border" />
+
+  <div class="d-flex justify-content-around p-5">
+    <div class="text-center">
+      <div class="lead text-muted font-weight-normal">BUSES</div>
+      <h1 class="text-danger">10,000</h1>
+      <div class="text-muted">Total buses currently being tracked</div>
+    </div>
+
+    <div class="text-center">
+      <div class="lead text-muted font-weight-normal">ROUTES</div>
+      <h1 class="text-danger">60,000</h1>
+      <div class="text-muted">Total routes covered by live tracking</div>
+    </div>
+
+    <div class="text-center">
+      <div class="lead text-muted font-weight-normal">USERS</div>
+      <h1 class="text-danger">40,000</h1>
+      <div class="text-muted">Total users using Track My Bus feature</div>
+    </div>
+  </div>
+</div>
+
+<!-- Convenience On-The-Go IOS/Android Container -->
+<div class="ios-android-container position-relative mb-5">
+  <div>
+    <!-- Background Image Container -->
+    <div class="d-flex justify-content-around">
+      <div class="pt-4">
+        <h3>CONVENIENCE ON-THE-GO.</h3>
+        <div class="w-75">
+          <p class="text-dark small">Exclusive features on mobile include</p>
+          <p class="text-dark small">
+            KYB NOW - when you need a bus in the next couple of hours. Board a
+            bus on its way.
+          </p>
+          <p class="text-dark small">
+            Boarding Point Navigation - Never lose your way while travelling to
+            your boarding point!
+          </p>
+          <p class="text-dark small">
+            1-click Booking - Save your favourite payment options securely on
+            KYB, and more.
+          </p>
+          <p class="text-dark small">Download the app.</p>
+          <p class="text-dark small">
+            Enter your mobile number below to download the KYB mobile app.
+          </p>
+          <!-- SMS me the link -->
+          <form class="form-inline">
+            <select class="form-control form-control-sm mr-2 mb-2">
+              <option>+91</option>
+            </select>
+            <input
+              class="form-control form-control-sm mr-2 mb-2 w-50"
+              type="text"
+              placeholder="Enter your mobile number"
+            />
+            <button class="btn btn-outline-danger btn-sm mb-2" type="submit">
+              SMS ME THE LINK
+            </button>
+          </form>
+          <!-- Download KYB Application -->
+          <button class="btn btn-dark rounded-circle mr-2">
+            <i class="fab fa-apple"></i>
+          </button>
+          <button class="btn btn-dark rounded-circle">
+            <i class="fab fa-google-play"></i>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <img
+          src="https://i.postimg.cc/TP4ftNJN/IOS-Android-device.png"
+          alt="IOS_Android_device"
+          width="420"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- We Promise To Deliver Container -->
+<div class="we-promise-container bg-light p-3 pb-5">
+  <div class="text-center m-4">
+    <img
+      src="https://i.postimg.cc/QN5hqb9S/promise.png"
+      alt="promise"
+      width="85"
+    />
+    <h2 class="text-dark m-2">WE PROMISE TO DELIVER</h2>
+  </div>
+
+  <div class="text-center d-flex">
+    <div class="border bg-white w-25">
+      <div class="p-4">
+        <img
+          src="https://i.postimg.cc/wMKHptPh/maximum-choices.png"
+          alt="maximum_choices"
+          width="120"
+        />
+      </div>
+      <div class="mb-5 m-4 font-weight-light lead">MAXIMUM CHOICE</div>
+      <div class="m-4 p-1 text-muted">
+        We give you the widest number of travel options across thousands of
+        routes.
+      </div>
+    </div>
+
+    <div class="border bg-white w-25">
+      <div class="p-4">
+        <img
+          src="https://i.postimg.cc/Y2mqs7V6/customer-care.png"
+          alt="customer_care"
+          width="91"
+        />
+      </div>
+      <div class="mb-5 mt-4 font-weight-light lead">
+        SUPERIOR CUSTOMER SERVICE
+      </div>
+      <div class="m-4 p-1 text-muted">
+        We put our experience and relationships to good use and are available to
+        solve your travel issues.
+      </div>
+    </div>
+
+    <div class="border bg-white w-25">
+      <div class="p-4">
+        <img
+          src="https://i.postimg.cc/JnHmv3Tr/lowest-Fare.png"
+          alt="lowest_Fare"
+          width="120"
+        />
+      </div>
+      <div class="mb-5 mt-4 font-weight-light lead">LOWEST PRICES</div>
+      <div class="m-4 p-1 text-muted">
+        We always give you the lowest price with the best partner offers.
+      </div>
+    </div>
+
+    <div class="border bg-white w-25">
+      <div class="p-4">
+        <img
+          src="https://i.postimg.cc/k4LMgYVR/benefits.png"
+          alt="benefits"
+          width="120"
+        />
+      </div>
+      <div class="mb-5 mt-4 font-weight-light lead">UNMATCHED BENEFITS</div>
+      <div class="m-4 p-1 text-muted">
+        We take care of your travel beyond ticketing by providing you with
+        innovative and unique benefits.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <ul class="containerHome clearfix" style="list-style: none">
+    <h6 class="seo-header">Top Operators</h6>
+    <li>
+      <a href="https://www.redbus.in/travels/srs-travels-srs.aspx"
+        >SRS Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/kallada-travels-kallada.aspx "
+        >Kallada Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/kpn-travels-kpn.aspx "
+        >KPN Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/orange-travels-orange.aspx "
+        >Orange Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/parveen-travels.aspx "
+        >Parveen Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/rajdhani-express.aspx "
+        >Rajdhani Express</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/vrl-travels-vrl.aspx"
+        >VRL Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/chartered-bus.aspx"
+        >Chartered Speed Bus</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/bengal-tiger.aspx">Bengal Tiger</a>
+      |
+      <a href="https://www.redbus.in/travels/srm-travels-srm.aspx"
+        >SRM Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/infant-jesus.aspx">Infant Jesus</a>
+      |
+      <a href="https://www.redbus.in/travels/patel-travels-lufthanza-9940.aspx"
+        >Patel Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/jbt-travels.aspx">JBT Travels</a>
+      |
+      <a href="https://www.redbus.in/travels/shatabdi-travels-1.aspx"
+        >Shatabdi Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/eagle-travels.aspx"
+        >Eagle Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/kanker-roadways-10172.aspx"
+        >Kanker Roadways</a
+      >
+      | <a href="https://www.redbus.in/travels/komitla.aspx">Komitla</a> |
+      <a href="https://www.redbus.in/travels/sri-krishna-travels.aspx"
+        >Sri Krishna Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/humsafar-travels-9807.aspx"
+        >Humsafar Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/mahasagar-travels-mahasagar.aspx"
+        >Mahasagar Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/raj-express-1.aspx">Raj Express</a>
+      |
+      <a href="https://www.redbus.in/travels/sharma-travels.aspx"
+        >Sharma Travels</a
+      >
+      |<a
+        href="https://www.redbus.in/travels/shrinath-travels-agency-online.aspx"
+        >Shrinath Travels</a>
+      |
+      <a href="https://www.redbus.in/travels/universal-travels.aspx"
+        >Universal Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/verma-travels.aspx"
+        >Verma Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/gujarat-travels.aspx"
+        >Gujarat Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/madurai-radha-travels.aspx"
+        >Madurai Radha Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/patel-tours-and-travels.aspx"
+        >Patel Tours and Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/paulo-travels.aspx"
+        >Paulo Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/royal-travels.aspx"
+        >Royal Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/amarnath-travels-9984.aspx"
+        >Amarnath Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/vaibhav-travels.aspx"
+        >Vaibhav Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/ganesh-travels-2.aspx"
+        >Ganesh Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/jabbar-travels.aspx"
+        >Jabbar Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/jain-travels.aspx">Jain Travels</a>
+      |
+      <a href="https://www.redbus.in/travels/manish-travels.aspx"
+        >Manish Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/pradhan.aspx">Pradhan Travels</a>
+      |
+      <a href="https://www.redbus.in/travels/ybm-travels.aspx">YBM Travels</a>
+      |
+      <a href="https://www.redbus.in/travels/hebron-transports.aspx"
+        >Hebron Transports</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/mahalaxmi-travels-mahalaxmi.aspx"
+        >Mahalaxmi travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/mr-travels.aspx">MR Travels</a> |
+      <a href="https://www.redbus.in/travels/vivegam-travels.aspx"
+        >Vivegam Travels</a
+      >
+      | <a href="https://www.redbus.in/travels/vst.aspx">VST Travels</a> |
+      <a href="https://www.redbus.in/travels/jakhar-travels.aspx"
+        >Jakhar Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/kaleswari-travels.aspx"
+        >Kaleswari Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/mahendra-travels-10027.aspx"
+        >Mahendra Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/neeta-tours-and-travels.aspx"
+        >Neeta Tours and Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/yamani-travels.aspx"
+        >Yamani Travels</a
+      >
+      |
+      <a href="https://www.redbus.in/travels/arthi-travels.aspx"
+        >Arthi Travels</a
+      >
+    </li>
+  </ul>
+</div>
+<!--footer -->
+<app-footer></app-footer>
+

@@ -1,0 +1,113 @@
+<nav class="navbar navbar-expand-sm bg-danger navbar-dark fixed-top">
+    <div class="container">
+      <!-- Brand -->
+      <!-- <a class="navbar-brand" href="#"><img src="https://i.postimg.cc/zXFNsGkg/redbus-white.png" alt="redBus" width="60px"></a> -->
+      <a class="navbar-brand" href="#"><b>KYB</b></a>
+      <!-- Toggler/collapsibe Button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#menu-nav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="menu-nav">
+        <!-- Left-aligned nav (default) -->
+        <div>
+          <ul class="navbar-nav">
+            <!-- <li class="nav-item">
+              <a class="nav-link text-white text-uppercase" href="#"
+                >Bus Tickets</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white text-uppercase" href="#">Hotels</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white text-uppercase" href="#">Bus Hire</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white text-uppercase" href="#"
+                >Pilgrimages</a
+              >
+            </li> -->
+          </ul>
+        </div>
+  
+        <!-- Right-aligned nav -->
+        <div class="collapse navbar-collapse justify-content-end" id="menu-nav">
+          <ul class="navbar-nav">
+             <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/privacy">Privacy</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" routerLink="/booking">Manage Booking</a>
+            </li>
+            <li class="nav-item dropdown" *ngFor="let data of logindata">
+              <a
+                class="nav-link dropdown-toggle text-white"
+                href="#"
+                data-toggle="dropdown"
+              >
+              <b>Hello {{ data.name }}</b>
+              </a>
+              <div class="dropdown-menu">
+               
+                <button type="button" class="dropdown-item">LogOut</button>
+              </div>
+            </li>
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+<div class="bookingcontainer">
+    <table class="table table-striped table-bordered bus">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">BusId</th>
+            <th scope="col">BusNo</th>
+            <th scope="col">BusName</th>
+            <th scope="col">BusType</th>
+            <th scope="col">Fare</th>
+            <th scope="col">Boardingpoint</th>
+            <th scope="col">DroppingPoint</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Seatno</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let dataItem of bookingList">
+            <td>{{dataItem.id}}</td>
+            <td>{{ dataItem.busId}}</td>
+            <td>{{ dataItem.busNo }}</td>
+            <td>{{ dataItem.busName }}</td>
+            <td>{{ dataItem.busType }}</td>
+            <td>{{ dataItem.fare }}</td>
+            <td>{{ dataItem.boardingPoint }}</td>
+            <td>{{ dataItem.dropingPoint }}</td>
+            <td>{{ dataItem.name }}</td>
+            <td>{{ dataItem.phone }}</td>
+            <td>{{ dataItem.gender }}</td>
+            <td>{{ dataItem.seatNo }}</td>
+             <td>
+              <button class="btn btn-primary" id="viewseat" (click)="delete(dataItem.id)">Cancel Ticket</button>
+            </td> 
+          </tr>
+        </tbody>
+      </table>
+</div>
+<app-footer></app-footer>
